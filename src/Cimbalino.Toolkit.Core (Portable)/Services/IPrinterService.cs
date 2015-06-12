@@ -8,6 +8,7 @@ namespace Cimbalino.Toolkit.Services
         event EventHandler<PrinterRequestEventArgs> PrintTaskRequested;
         event EventHandler<PrinterTaskCompletedEventArgs> PrintTaskCompleted;
         Task<bool> ShowAsync();
+        Task<bool> Show3DAsync();
     }
 
     public class PrinterRequestEventArgs : EventArgs

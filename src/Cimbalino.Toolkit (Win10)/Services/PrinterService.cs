@@ -1,9 +1,14 @@
-﻿#if WINDOWS_UAP || WINDOWS_APP
+﻿#if WINDOWS_UAP 
+using System;
+using System.Threading.Tasks;
+using Windows.Graphics.Printing;
+using Windows.Graphics.Printing3D;
+using Cimbalino.Toolkit.Helpers;
+#elif WINDOWS_APP
 using System;
 using System.Threading.Tasks;
 using Windows.Graphics.Printing;
 using Cimbalino.Toolkit.Helpers;
-
 #else
 using System;
 using System.Threading.Tasks;
@@ -58,6 +63,15 @@ namespace Cimbalino.Toolkit.Services
         {
 #if WINDOWS_UAP || WINDOWS_APP
             return PrintManager.ShowPrintUIAsync().AsTask();
+#else
+            return ExceptionHelper.ThrowNotSupported<Task<bool>>();
+#endif
+        }
+
+        public Task<bool> Show3DAsync()
+        {
+#if WINDOWS_UAP
+            return Print3DManager.ShowPrintUIAsync().AsTask();
 #else
             return ExceptionHelper.ThrowNotSupported<Task<bool>>();
 #endif
