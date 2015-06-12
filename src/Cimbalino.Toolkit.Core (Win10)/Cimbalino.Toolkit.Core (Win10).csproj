@@ -310,6 +310,9 @@
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IPhoneCallService.cs">
       <Link>Services\IPhoneCallService.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IPrinterService.cs">
+      <Link>Services\IPrinterService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IRuntimeInformationService.cs">
       <Link>Services\IRuntimeInformationService.cs</Link>
     </Compile>

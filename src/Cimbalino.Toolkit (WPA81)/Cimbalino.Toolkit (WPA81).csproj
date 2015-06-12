@@ -89,6 +89,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Cimbalino.Toolkit %28Win10%29\Services\PrinterService.cs">
+      <Link>Services\PrinterService.cs</Link>
+    </Compile>
     <Compile Include="..\Cimbalino.Toolkit %28Win10%29\Services\TitleBarService.cs">
       <Link>Services\TitleBarService.cs</Link>
     </Compile>
