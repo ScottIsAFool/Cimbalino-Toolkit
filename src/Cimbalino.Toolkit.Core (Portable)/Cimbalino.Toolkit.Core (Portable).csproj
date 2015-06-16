@@ -93,6 +93,7 @@
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
     <Compile Include="Services\IDeferral.cs" />
     <Compile Include="Services\BatteryStatusChangedEventArgs.cs" />
+    <Compile Include="Services\IDeferral.cs" />
     <Compile Include="Services\ITitleBarService.cs" />
     <Compile Include="Services\IWindowsPhoneStoreService.cs" />
     <Compile Include="Services\IWindowsStoreService.cs" />
