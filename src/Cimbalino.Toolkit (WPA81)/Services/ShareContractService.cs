@@ -5,7 +5,6 @@ using Cimbalino.Toolkit.Helpers;
 using System;
 using Windows.ApplicationModel.DataTransfer;
 using Cimbalino.Toolkit.Helpers;
-
 #endif
 
 namespace Cimbalino.Toolkit.Services
@@ -15,7 +14,7 @@ namespace Cimbalino.Toolkit.Services
 #if !WINDOWS_PHONE
         public event EventHandler<ShareDataRequestedEventArgs> DataRequested;
 
-        public void ShowUIAsync()
+        public void Show()
         {
             var manager = DataTransferManager.GetForCurrentView();
             manager.DataRequested += ManagerOnDataRequested;
@@ -44,7 +43,7 @@ namespace Cimbalino.Toolkit.Services
             }
         }
 
-        public void ShowUIAsync()
+        public void Show()
         {
             ExceptionHelper.ThrowNotSupported();
         }

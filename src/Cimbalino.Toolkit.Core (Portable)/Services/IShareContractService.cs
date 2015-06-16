@@ -4,7 +4,7 @@ namespace Cimbalino.Toolkit.Services
 {
     public interface IShareContractService
     {
-        void ShowUIAsync();
+        void Show();
 
         event EventHandler<ShareDataRequestedEventArgs> DataRequested;
     }
