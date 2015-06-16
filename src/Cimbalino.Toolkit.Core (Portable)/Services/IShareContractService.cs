@@ -21,6 +21,8 @@ namespace Cimbalino.Toolkit.Services
 
     public interface IShareDataRequest : IDeferral
     {
+        string Title { get; set; }
+        string Description { get; set; }
         void FailWithDisplayText(string text);
         void SetApplicationLink(Uri value);
         void SetData(string formatId, object value);
