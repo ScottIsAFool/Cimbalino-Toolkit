@@ -3,7 +3,10 @@ using System;
 using Cimbalino.Toolkit.Helpers;
 #else
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Windows.ApplicationModel.DataTransfer;
+using Windows.Storage;
 using Cimbalino.Toolkit.Helpers;
 #endif
 
@@ -145,6 +148,24 @@ namespace Cimbalino.Toolkit.Services
         {
             _request?.Data?.SetWebLink(value);
         }
+
+        public void SetStorageItems(IEnumerable<object> items)
+        {
+            if (items == null)
+            {
+                throw new InvalidOperationException("items cannot be null");
+            }
+
+            var itemList = items.ToList();
+
+            if (itemList.Any(x => x.GetType() != typeof (IStorageItem)))
+            {
+                throw new InvalidOperationException("Items must be of type IStorageItem");
+            }
+
+            var storageItems = itemList.Select(item => item as IStorageItem);
+            _request?.Data?.SetStorageItems(storageItems);
+        }
 #else
         public string Title
         {
@@ -211,6 +232,11 @@ namespace Cimbalino.Toolkit.Services
         }
 
         public void SetWebLink(Uri value)
+        {
+            ExceptionHelper.ThrowNotSupported();
+        }
+
+        public void SetStorageItems(IEnumerable<object> items)
         {
             ExceptionHelper.ThrowNotSupported();
         }
