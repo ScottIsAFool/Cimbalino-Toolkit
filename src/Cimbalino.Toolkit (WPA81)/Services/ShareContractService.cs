@@ -4,6 +4,7 @@ using Cimbalino.Toolkit.Helpers;
 #else
 using System;
 using Windows.ApplicationModel.DataTransfer;
+using Cimbalino.Toolkit.Helpers;
 
 #endif
 
@@ -75,6 +76,42 @@ namespace Cimbalino.Toolkit.Services
             _deferral = _request?.GetDeferral();
         }
 
+        public string Title
+        {
+            get
+            {
+                return _request?.Data?.Properties?.Title;
+            }
+            set
+            {
+                if (_request == null)
+                {
+                    ExceptionHelper.ThrowNotSupported();
+                    return;
+                }
+
+                _request.Data.Properties.Title = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return _request?.Data?.Properties?.Description;
+            }
+            set
+            {
+                if (_request == null)
+                {
+                    ExceptionHelper.ThrowNotSupported();
+                    return;
+                }
+
+                _request.Data.Properties.Description = value;
+            }
+        }
+
         public void FailWithDisplayText(string text)
         {
             _request?.FailWithDisplayText(text);
@@ -110,6 +147,30 @@ namespace Cimbalino.Toolkit.Services
             _request?.Data?.SetWebLink(value);
         }
 #else
+        public string Title
+        {
+            get
+            {
+                return ExceptionHelper.ThrowNotSupported<string>();
+            }
+            set
+            {
+                ExceptionHelper.ThrowNotSupported();
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return ExceptionHelper.ThrowNotSupported<string>();
+            }
+            set
+            {
+                ExceptionHelper.ThrowNotSupported();
+            }
+        }
+
         public void Complete()
         {
             ExceptionHelper.ThrowNotSupported();
