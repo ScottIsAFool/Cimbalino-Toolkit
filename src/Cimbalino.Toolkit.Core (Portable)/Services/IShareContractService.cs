@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Cimbalino.Toolkit.Services
 {
@@ -30,5 +31,6 @@ namespace Cimbalino.Toolkit.Services
         void SetRtf(string value);
         void SetText(string value);
         void SetWebLink(Uri value);
+        void SetStorageItems(IEnumerable<object> items);
     }
 }
