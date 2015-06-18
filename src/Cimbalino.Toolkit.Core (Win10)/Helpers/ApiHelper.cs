@@ -4,6 +4,9 @@ using Windows.Foundation.Metadata;
 
 namespace Cimbalino.Toolkit.Core.Helpers
 {
+    /// <summary>
+    /// Helper class to define what functionality is available on each platform
+    /// </summary>
     public static class ApiHelper
     {
 #if WINDOWS_UAP
@@ -20,6 +23,13 @@ namespace Cimbalino.Toolkit.Core.Helpers
         public static bool SupportsChat => true;
         public static bool SupportsVibrate => true;
         public static bool SupportsStatusBar => true;
+#elif WINDOWS_PHONE
+        public static bool SupportsBackButton => true;
+        public static bool SupportsMemoryManager => false;
+        public static bool SupportsPhoneCalls => false;
+        public static bool SupportsChat => false;
+        public static bool SupportsVibrate => false;
+        public static bool SupportsStatusBar => false;
 #else
         public static bool SupportsBackButton => false;
         public static bool SupportsMemoryManager => false;
