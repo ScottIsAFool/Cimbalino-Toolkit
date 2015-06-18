@@ -31,12 +31,6 @@ namespace Cimbalino.Toolkit.Services
         public PrinterTaskCompletion Completion { get; set; }
     }
 
-    public interface IDeferral
-    {
-        void Complete();
-        void GetDeferral();
-    }
-
     public interface IPrinterServiceTask : IDeferral
     {
         void CreatePrintTask(string title);
