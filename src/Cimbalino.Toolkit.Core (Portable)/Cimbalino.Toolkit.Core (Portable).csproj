@@ -96,6 +96,10 @@
     <Compile Include="Helpers\WeakFunc{T,TResult}.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ApplicationProfileServiceMode.cs" />
+    <Compile Include="Services\AuthenticationOptions.cs" />
+    <Compile Include="Services\AuthenticationResult.cs" />
+    <Compile Include="Services\AuthenticationStatus.cs" />
+    <Compile Include="Services\IAuthenticationBrokerService.cs" />
     <Compile Include="Services\IClipboardService.cs" />
     <Compile Include="Services\IDispatcherService.cs" />
     <Compile Include="Services\ILockScreenService.cs" />

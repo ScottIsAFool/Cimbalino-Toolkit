@@ -258,6 +258,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Extensions\LauncherServiceExtensions.cs" />
+    <Compile Include="Services\AuthenticationBrokerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cimbalino.Toolkit.Core %28UWP%29\Cimbalino.Toolkit.Core %28UWP%29.csproj">

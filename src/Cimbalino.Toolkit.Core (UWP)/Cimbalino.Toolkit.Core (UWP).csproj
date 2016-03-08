@@ -283,6 +283,15 @@
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\ApplicationProfileServiceMode.cs">
       <Link>Services\ApplicationProfileServiceMode.cs</Link>
     </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\AuthenticationOptions.cs">
+      <Link>Services\AuthenticationOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\AuthenticationResult.cs">
+      <Link>Services\AuthenticationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\AuthenticationStatus.cs">
+      <Link>Services\AuthenticationStatus.cs</Link>
+    </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\DeviceStatusServicePowerSource.cs">
       <Link>Services\DeviceStatusServicePowerSource.cs</Link>
     </Compile>
@@ -297,6 +306,9 @@
     </Compile>
     <Compile Include="..\cimbalino.toolkit.core %28portable%29\services\IApplicationSettingsServiceHandler.cs">
       <Link>Services\IApplicationSettingsServiceHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IAuthenticationBrokerService.cs">
+      <Link>Services\IAuthenticationBrokerService.cs</Link>
     </Compile>
     <Compile Include="..\Cimbalino.Toolkit.Core %28Portable%29\Services\IClipboardService.cs">
       <Link>Services\IClipboardService.cs</Link>
