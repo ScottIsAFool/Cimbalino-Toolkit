@@ -257,7 +257,7 @@
       <Link>Services\StatusBarService.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\LauncherServiceExtensions.cs" />
+    <Compile Include="Extensions\LauncherServiceExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cimbalino.Toolkit.Core %28UWP%29\Cimbalino.Toolkit.Core %28UWP%29.csproj">
