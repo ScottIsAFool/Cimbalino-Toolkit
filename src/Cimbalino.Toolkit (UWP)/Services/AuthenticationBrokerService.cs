@@ -1,17 +1,24 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
+#if !WINDOWS_PHONE
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Security.Authentication.Web;
+#else
+using System;
+using System.Threading.Tasks;
+using Cimbalino.Toolkit.Helpers;
+#endif
 
 namespace Cimbalino.Toolkit.Services
 {
     public class AuthenticationBrokerService : IAuthenticationBrokerService
     {
+#if WINDOWS_PHONE
+        public Uri ApplicationCallbackUri => ExceptionHelper.ThrowNotSupported<Uri>("Not supported in silverlight");
+#else
         public Uri ApplicationCallbackUri => WebAuthenticationBroker.GetCurrentApplicationCallbackUri();
+#endif
 
         public virtual async Task<AuthenticationResult> AuthenticateAsync(Uri url, Uri callbackUri = null, AuthenticationOptions options = AuthenticationOptions.None)
         {
@@ -57,6 +64,7 @@ namespace Cimbalino.Toolkit.Services
             return result;
         }
 
+#if !WINDOWS_PHONE
         private static WebAuthenticationOptions GetOption(AuthenticationOptions option)
         {
             var i = (int) option;
@@ -68,5 +76,6 @@ namespace Cimbalino.Toolkit.Services
             var i = (int) status;
             return (AuthenticationStatus) i;
         }
+#endif
     }
 }
