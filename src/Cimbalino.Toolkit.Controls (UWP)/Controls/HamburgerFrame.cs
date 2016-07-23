@@ -19,6 +19,7 @@ using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 namespace Cimbalino.Toolkit.Controls
 {
@@ -271,7 +272,7 @@ namespace Cimbalino.Toolkit.Controls
                 return;
             }
 
-            this.Navigated += HamburgerFrame_Navigated;
+            this.OnNavigated += HamburgerFrame_Navigated;
 
             ApplicationView.GetForCurrentView().VisibleBoundsChanged += ApplicationView_VisibleBoundsChanged;
         }
@@ -300,6 +301,48 @@ namespace Cimbalino.Toolkit.Controls
             }
 
             ResetApplicationViewVisibleMargin(ApplicationView.GetForCurrentView());
+        }
+
+        /// <summary>
+        /// Method called when the frame has navigated
+        /// </summary>
+        /// <param name="e">The <see cref="NavigationEventArgs"/> instance containing the event data.</param>
+        public virtual void OnNavigated(NavigationEventArgs e)
+        {
+            if (_observedContainer != null)
+            {
+                _observedContainer.SizeChanged -= ObservedContainer_SizeChanged;
+                _observedContainer = null;
+            }
+
+            var page = e.Content as Page;
+
+            if (page != null)
+            {
+                var observedContainer = page.Content as FrameworkElement;
+
+                if (observedContainer != null)
+                {
+                    observedContainer.SizeChanged += ObservedContainer_SizeChanged;
+
+                    ResetInternalMargin(page, observedContainer);
+
+                    _observedContainer = observedContainer;
+                }
+            }
+
+            _currentParameter = e.Parameter;
+
+            lock (_registeredControlsLock)
+            {
+                foreach (var hamburgerMenuButton in _registeredHamburgerMenuButtons)
+                {
+                    if (hamburgerMenuButton.NavigationSourcePageType != null)
+                    {
+                        hamburgerMenuButton.UpdateCheckedState(e.SourcePageType, e.Parameter);
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -408,41 +451,9 @@ namespace Cimbalino.Toolkit.Controls
 
         private void HamburgerFrame_Navigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
         {
-            if (_observedContainer != null)
-            {
-                _observedContainer.SizeChanged -= ObservedContainer_SizeChanged;
-                _observedContainer = null;
-            }
-
-            var page = e.Content as Page;
-
-            if (page != null)
-            {
-                var observedContainer = page.Content as FrameworkElement;
-
-                if (observedContainer != null)
-                {
-                    observedContainer.SizeChanged += ObservedContainer_SizeChanged;
-
-                    ResetInternalMargin(page, observedContainer);
-
-                    _observedContainer = observedContainer;
-                }
-            }
-
-            _currentParameter = e.Parameter;
-
-            lock (_registeredControlsLock)
-            {
-                foreach (var hamburgerMenuButton in _registeredHamburgerMenuButtons)
-                {
-                    if (hamburgerMenuButton.NavigationSourcePageType != null)
-                    {
-                        hamburgerMenuButton.UpdateCheckedState(e.SourcePageType, e.Parameter);
-                    }
-                }
-            }
+            OnNavigated(e);
         }
+
 
         private void RootSplitView_PaneClosing(SplitView sender, SplitViewPaneClosingEventArgs args)
         {
