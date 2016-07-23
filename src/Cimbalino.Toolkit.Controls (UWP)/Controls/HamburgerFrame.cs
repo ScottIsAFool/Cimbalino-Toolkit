@@ -14,7 +14,6 @@
 
 using System;
 using System.Collections.Generic;
-using Cimbalino.Toolkit.Services;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -272,7 +271,7 @@ namespace Cimbalino.Toolkit.Controls
                 return;
             }
 
-            this.OnNavigated += HamburgerFrame_Navigated;
+            this.Navigated += HamburgerFrame_Navigated;
 
             ApplicationView.GetForCurrentView().VisibleBoundsChanged += ApplicationView_VisibleBoundsChanged;
         }
